@@ -145,6 +145,7 @@
             btnClear.TabIndex = 18;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // dgvFoodItems
             // 
@@ -153,12 +154,14 @@
             dgvFoodItems.BackgroundColor = SystemColors.ControlLight;
             dgvFoodItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFoodItems.Location = new Point(12, 362);
+            dgvFoodItems.MultiSelect = false;
             dgvFoodItems.Name = "dgvFoodItems";
             dgvFoodItems.ReadOnly = true;
             dgvFoodItems.RowHeadersWidth = 51;
             dgvFoodItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFoodItems.Size = new Size(659, 235);
             dgvFoodItems.TabIndex = 19;
+            dgvFoodItems.CellClick += dgvFoodItems_CellClick;
             // 
             // btnUpdate
             // 
@@ -168,6 +171,7 @@
             btnUpdate.TabIndex = 20;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // Form1
             // 
