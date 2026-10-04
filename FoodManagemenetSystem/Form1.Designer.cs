@@ -41,6 +41,11 @@
             btnClear = new Button();
             dgvFoodItems = new DataGridView();
             btnUpdate = new Button();
+            btnDelete = new Button();
+            label1 = new Label();
+            txtSearch = new TextBox();
+            btnSearch = new Button();
+            btnShowAll = new Button();
             ((System.ComponentModel.ISupportInitialize)nudPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvFoodItems).BeginInit();
@@ -82,6 +87,7 @@
             txtFoodName.Name = "txtFoodName";
             txtFoodName.Size = new Size(150, 27);
             txtFoodName.TabIndex = 6;
+            txtFoodName.TextChanged += fisj;
             // 
             // lblFoodName
             // 
@@ -173,11 +179,62 @@
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(477, 284);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(94, 29);
+            btnDelete.TabIndex = 21;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 233);
+            label1.Name = "label1";
+            label1.Size = new Size(56, 20);
+            label1.TabIndex = 22;
+            label1.Text = "Search:";
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(113, 226);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(125, 27);
+            txtSearch.TabIndex = 23;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(269, 226);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(94, 29);
+            btnSearch.TabIndex = 24;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // btnShowAll
+            // 
+            btnShowAll.Location = new Point(369, 225);
+            btnShowAll.Name = "btnShowAll";
+            btnShowAll.Size = new Size(94, 29);
+            btnShowAll.TabIndex = 25;
+            btnShowAll.Text = "Show All";
+            btnShowAll.UseVisualStyleBackColor = true;
+            btnShowAll.Click += btnShowAll_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1276, 761);
+            Controls.Add(btnShowAll);
+            Controls.Add(btnSearch);
+            Controls.Add(txtSearch);
+            Controls.Add(label1);
+            Controls.Add(btnDelete);
             Controls.Add(btnUpdate);
             Controls.Add(dgvFoodItems);
             Controls.Add(btnClear);
@@ -216,5 +273,10 @@
         private Button btnClear;
         private DataGridView dgvFoodItems;
         private Button btnUpdate;
+        private Button btnDelete;
+        private Label label1;
+        private TextBox txtSearch;
+        private Button btnSearch;
+        private Button btnShowAll;
     }
 }
