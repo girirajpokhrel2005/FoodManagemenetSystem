@@ -255,24 +255,37 @@ namespace FoodManagemenetSystem
                 return;
             }
 
-            // Update selected object
-            foodToUpdate.FoodName = txtFoodName.Text.Trim();
-            foodToUpdate.Category = cmbCategory.Text;
-            foodToUpdate.Price = nudPrice.Value;
-            foodToUpdate.Quantity = (int)nudQuantity.Value;
+            // Update selected object with exception handling
+            try
+            {
+                foodToUpdate.UpdateBasicDetails(
+                    txtFoodName.Text.Trim(),
+                    (int)nudQuantity.Value);
 
-            RefreshFoodGrid();
+                foodToUpdate.Category = cmbCategory.Text;
+                foodToUpdate.Price = nudPrice.Value;
 
-            MessageBox.Show(
-                "Food item updated successfully.",
-                "Update Food",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                RefreshFoodGrid();
+
+                MessageBox.Show(
+                    "Food item updated successfully.",
+                    "Update Food",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Update Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
 
             selectedFood = null;
             ClearInputs();
-        }
 
+        }
         // =========================
         // CLEAR BUTTON
         // =========================
@@ -381,9 +394,9 @@ namespace FoodManagemenetSystem
         {
             foreach (DataGridViewRow row in dgvFoodItems.Rows)
             {
-                if (row.DataBoundItem is FoodItem food)
+                if (row.DataBoundItem is InventoryItem item)
                 {
-                    if (food.Quantity <= 5)
+                    if (item.GetStockStatus() == "Low Stock")
                     {
                         row.DefaultCellStyle.BackColor = Color.MistyRose;
                     }
