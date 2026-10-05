@@ -140,6 +140,9 @@ namespace FoodManagemenetSystem
             // Bind the updated list
             dgvFoodItems.DataSource = foodItems;
 
+            // Highlight food items with low stock
+            HighlightLowStock();
+
             // Don't leave a row highlighted after refreshing
             dgvFoodItems.ClearSelection();
         }
@@ -373,6 +376,36 @@ namespace FoodManagemenetSystem
             RefreshFoodGrid();
             txtSearch.Clear();
             dgvFoodItems.ClearSelection();
+        }
+        private void HighlightLowStock()
+        {
+            foreach (DataGridViewRow row in dgvFoodItems.Rows)
+            {
+                if (row.DataBoundItem is FoodItem food)
+                {
+                    if (food.Quantity <= 5)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.MistyRose;
+                    }
+                }
+            }
+        }
+
+        private void btnSummary_Click(object sender, EventArgs e)
+        {
+            int totalItems = foodItems.Count;
+
+            int totalQuantity = foodItems.Sum(food => food.Quantity);
+
+            int lowStockItems = foodItems.Count(food => food.Quantity <= 5);
+
+            MessageBox.Show(
+                $"Total Food Items: {totalItems}\n" +
+                $"Total Stock Quantity: {totalQuantity}\n" +
+                $"Low Stock Items: {lowStockItems}",
+                "Stock Summary",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
     }
 }

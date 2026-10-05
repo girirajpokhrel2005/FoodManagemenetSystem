@@ -46,6 +46,7 @@
             txtSearch = new TextBox();
             btnSearch = new Button();
             btnShowAll = new Button();
+            btnSummary = new Button();
             ((System.ComponentModel.ISupportInitialize)nudPrice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudQuantity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvFoodItems).BeginInit();
@@ -225,11 +226,22 @@
             btnShowAll.UseVisualStyleBackColor = true;
             btnShowAll.Click += btnShowAll_Click;
             // 
+            // btnSummary
+            // 
+            btnSummary.Location = new Point(477, 225);
+            btnSummary.Name = "btnSummary";
+            btnSummary.Size = new Size(94, 29);
+            btnSummary.TabIndex = 26;
+            btnSummary.Text = "Summary";
+            btnSummary.UseVisualStyleBackColor = true;
+            btnSummary.Click += btnSummary_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1276, 761);
+            Controls.Add(btnSummary);
             Controls.Add(btnShowAll);
             Controls.Add(btnSearch);
             Controls.Add(txtSearch);
@@ -278,5 +290,6 @@
         private TextBox txtSearch;
         private Button btnSearch;
         private Button btnShowAll;
+        private Button btnSummary;
     }
 }
